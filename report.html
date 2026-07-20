@@ -1,0 +1,32 @@
+import pandas as pd
+
+# Sample Data
+data = {
+    "Name": ["Diya", "Rahul", "Diya", None],
+    "Age": [19, 20, 19, 21],
+    "Marks": [85, 90, 85, None]
+}
+
+df = pd.DataFrame(data)
+
+print("Original Data:")
+print(df)
+
+# Data Cleaning
+df = df.drop_duplicates()          # Remove duplicate rows
+df = df.dropna()                   # Remove rows with missing values
+
+print("\nCleaned Data:")
+print(df)
+
+# Reporting Automation
+print("\nReport")
+print("Total Students:", len(df))
+print("Average Marks:", df["Marks"].mean())
+print("Highest Marks:", df["Marks"].max())
+print("Lowest Marks:", df["Marks"].min())
+
+# Save Report
+df.to_csv("cleaned_report.csv", index=False)
+
+print("\nReport saved as 'cleaned_report.csv'")
